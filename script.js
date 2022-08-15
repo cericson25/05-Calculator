@@ -3,11 +3,13 @@ const numberButtons = document.querySelectorAll(".num");
 const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.querySelector("#clear");
 const equalsButton = document.querySelector("#equals");
+const decimalButton = document.getElementById(".");
 
 let firstNum = "";
 let secondNum = false;
 let operator = "";
 let recursive = false;
+let decimal = false;
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -25,14 +27,37 @@ numberButtons.forEach((button) => {
   });
 });
 
+decimalButton.addEventListener("click", (e) => {
+  if (decimal === true) return;
+  if (secondNum === false) {
+    if (firstNum && recursive) {
+      firstNum = 0;
+    }
+    firstNum += decimalButton.id;
+    display.innerText = firstNum;
+  } else {
+    if (!secondNum) {
+      secondNum = "0.";
+    } else {
+      secondNum += decimalButton.id;
+    }
+    display.innerText = firstNum + " " + operator + " " + secondNum;
+  }
+  decimal = true;
+  recursive = false;
+});
+
 operatorButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (!firstNum) return;
+    if (!firstNum || firstNum === ";)") return;
+
     if (operator) {
       firstNum = operate(operator, firstNum, secondNum);
     }
     operator = button.id;
     secondNum = "";
+    decimal = false;
+
     display.innerText = firstNum + " " + operator;
   });
 });
@@ -42,6 +67,7 @@ clearButton.addEventListener("click", () => {
     secondNum = false;
   }
   firstNum = "";
+  decimal = false;
   display.innerText = 0;
 });
 
@@ -51,6 +77,7 @@ equalsButton.addEventListener("click", () => {
     display.innerText = firstNum;
     secondNum = false;
     operator = "";
+    decimal = false;
     recursive = true;
   }
 });
@@ -68,7 +95,12 @@ const multiply = function (a, b) {
 };
 
 const divide = function (a, b) {
-  return a / b;
+  console.log(b);
+  if (b == 0) {
+    return ";)";
+  } else {
+    return a / b;
+  }
 };
 
 const operate = function (operator, num1, num2) {

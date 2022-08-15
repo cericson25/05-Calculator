@@ -9,15 +9,19 @@
 }
 
 body {
+  margin: 0;
+  height: 100vh;
   background-color: #a4a4a4;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .calc-container {
   display: flex;
   flex-direction: column;
+  flex: 1 0;
 }
 
 .display {
@@ -101,4 +105,22 @@ button:hover {
 #decimal {
   padding-bottom: 15px;
   font-size: 50px;
+}
+
+footer {
+  box-sizing: border-box;
+  padding: 15px;
+  display: flex;
+  width: 100vw;
+  flex: 0 1 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  background-color: #505050;
+  color: #e0e0e0;
+  font-family: Roboto Arial, Helvetica, sans-serif;
+}
+
+footer a {
+  color: #e0e0e0;
 }
