@@ -1,0 +1,104 @@
+@font-face {
+  font-family: RobotoBold;
+  src: url(./fonts/Roboto-Black.ttf);
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(./fonts/Roboto-Light.ttf);
+}
+
+body {
+  background-color: #a4a4a4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calc-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.display {
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+  max-width: 480px;
+  font-family: RobotoBold, Arial, Helvetica, sans-serif;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  font-size: 50px;
+  text-align: right;
+  color: #101010;
+}
+
+.main {
+  padding: 15px;
+  width: 450px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-top: 3px solid #404040;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  flex: 5.5 0;
+  gap: 10px;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 0 content;
+}
+
+.right-content button {
+  flex: 1 1 50px;
+}
+
+.row {
+  flex: 1 1;
+  gap: 10px;
+  display: flex;
+}
+
+.row button {
+  flex: 1;
+}
+
+button {
+  border: 0;
+  color: #202020;
+  background-color: #e0e0e0;
+  border-radius: 25%;
+  font-size: 25px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+button:hover {
+  background-color: #505050;
+  cursor: pointer;
+}
+
+#clear,
+#equals {
+  background-color: #404040;
+  color: #e0e0e0;
+}
+
+#clear:hover,
+#equals:hover {
+  background-color: #202020;
+  cursor: pointer;
+}
+
+#decimal {
+  padding-bottom: 15px;
+  font-size: 50px;
+}
